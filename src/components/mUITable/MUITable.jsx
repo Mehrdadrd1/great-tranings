@@ -16,24 +16,23 @@ import { tableCellClasses } from "@mui/material";
 import "./style.css";
 import * as React from "react";
 
-function createData(name, calories, fat, carbs, protein, price) {
+function createData(id, itemName, order, partNumber, isActive) {
   return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
+    id,
+    itemName,
+    order,
+    partNumber,
+    isActive,
     history: [
       {
-        date: "2020-01-05",
-        customerId: "11091700",
-        amount: 3,
+        id: "00",
+        langDesc: "فارسی",
+        langId: "000",
       },
       {
-        date: "2020-01-02",
-        customerId: "Anonymous",
-        amount: 1,
+        id: "01",
+        langDesc: "انگلیسی",
+        langId: "001",
       },
     ],
   };
@@ -104,28 +103,27 @@ function Row(props) {
 
 Row.propTypes = {
   row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
+    id: PropTypes.string.isRequired,
+    itemName: PropTypes.string.isRequired,
+    order: PropTypes.number.isRequired,
+    partNumber: PropTypes.string.isRequired,
+    isActive: PropTypes.bool.isRequired,
+    lang: PropTypes.arrayOf(
       PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        langDesc: PropTypes.string.isRequired,
+        langId: PropTypes.string.isRequired,
       })
     ).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
   }).isRequired,
 };
 
 const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0, 3.99),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3, 4.99),
-  createData("Eclair", 262, 16.0, 24, 6.0, 3.79),
-  createData("Cupcake", 305, 3.7, 67, 4.3, 2.5),
-  createData("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
+  createData("0", "آیتم 1", 1, "011", false),
+  createData("1", "آیتم 2", 2, "012", true),
+  createData("2", "آیتم 3", 3, "013", true),
+  createData("3", "آیتم 4", 4, "014", false),
+  createData("4", "آیتم 5", 5, "015", true),
 ];
 
 export default function MUITable() {
@@ -144,11 +142,11 @@ export default function MUITable() {
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>id</TableCell>
+            <TableCell align="right">نام آیتم</TableCell>
+            <TableCell align="right">الویت</TableCell>
+            <TableCell align="right">پارت نامبر</TableCell>
+            <TableCell align="right">فعال/غیر فعال</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

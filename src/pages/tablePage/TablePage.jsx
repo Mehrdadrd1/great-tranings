@@ -1,7 +1,7 @@
 import React from "react";
-import MUITable from "../../components/MUITable";
 import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import MUITable from "../../components/mUITable/MUITable";
 
 export const TablePage = () => {
   const navigate = useNavigate();
