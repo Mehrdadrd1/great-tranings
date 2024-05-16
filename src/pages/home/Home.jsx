@@ -66,6 +66,13 @@ export const Home = () => {
         >
           DropDown Page
         </Button>
+        <Button
+          variant="contained"
+          sx={{ mx: 1 }}
+          onClick={() => navigate("/agGridPage")}
+        >
+          AgGridPage
+        </Button>
       </Box>
     </Box>
   );
